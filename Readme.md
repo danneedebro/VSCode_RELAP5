@@ -20,7 +20,7 @@ Mark down the component number for every hydrodynamic component.
 Folds code between the following lines
 
 ```
-\*\<SECTION>
+*<SECTION>
 
-\*\<\/SECTION>
+*</SECTION>
 ```
