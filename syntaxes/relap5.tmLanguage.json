@@ -4,7 +4,7 @@
     
     "patterns": [
         {
-            "begin": "\"",
+            "begin":  "\"",
             "end": "\"",
             "name": "string.quoted.double"
         },
