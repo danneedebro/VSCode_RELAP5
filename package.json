@@ -1,0 +1,27 @@
+{
+    "name": "relap5",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": ">=0.9.0-pre.1"
+    },
+    "publisher": "me",
+    "contributes": {
+        "languages": [{
+            "id": "relap5",
+            "aliases": ["relap5"],
+            "extensions": [".i",".inp"],
+            "configuration": "./configs/relap5.configuration.json"
+        }],
+        "grammars": [{
+            "language": "relap5",
+            "scopeName": "source.relap5",
+            "path": "./syntaxes/relap5.tmLanguage.json"
+        }],
+        "snippets": [
+			{
+				"language": "relap5",
+				"path": "./snippets/relap5.json"
+			}
+		]
+    }
+}

@@ -1,0 +1,34 @@
+{   
+    "scopeName": "source.relap5",
+    "fileTypes": ["i"],
+    
+    "patterns": [
+        {
+            "begin": "\"",
+            "end": "\"",
+            "name": "string.quoted.double"
+        },
+        {
+            "name": "string.quoted.single",
+            "match": "\\*SECTION.*"
+        },
+        {   "name": "comment.line.number-sign.relap5",
+            "match": "\\*.*"
+        },
+        {
+            "name": "keyword.control.flow.relap5",
+            "match": "(?x)\n  \\b(?<!\\.)(\n    async | continue | del | assert | break | finally | for\n    | from | elif | else | if | except | pass | raise\n    | return | try | while | with\n  )\\b\n"
+        },
+        
+        {
+            "name": "keyword.control.flow.relap5",
+            "match": "(?=^[0-9]{7}\\b)(^[0-9]{3})"
+        },
+        {
+            "name": "string.quoted.single",
+            "match": "(?<=^[0-9]{3})([0-9]{4}\\b)"
+        }
+    ]
+}
+
+
