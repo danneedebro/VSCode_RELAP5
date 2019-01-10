@@ -22,11 +22,18 @@
         
         {
             "name": "keyword.control.flow.relap5",
-            "match": "(?=^[0-9]{7}\\b)(^[0-9]{3})"
+            "match": "(?=^[0-9]{7}\\b)(^[0-9]{3})",
+            "description": "Highlights the component number for hydrodynamic components. Ex: CCC0000"
         },
         {
             "name": "string.quoted.single",
-            "match": "(?<=^[0-9]{3})([0-9]{4}\\b)"
+            "match": "(?<=^[0-9]{3})([0-9]{4}\\b)",
+            "description": "Highlights the card number for hydrodynamic components Ex: CCCNNNN"
+        },
+        {
+            "name": "string.quoted.single",
+            "match": "(?=[0-9]{5}\\b)((?<=^205)[0-9]{3})",
+            "description": "Highlights the control variable number for non expanded format 205CCC00"
         }
     ]
 }

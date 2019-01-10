@@ -188,5 +188,57 @@
 			"${3}"
 		],
 		"description": "Pipe"
+	},
+	"Control variable - sum": {
+		"prefix": ["cntrlvar-sum"],
+		"body": [
+			"205${1:CCC}00 ${2:name} sum 1.00${4:=<scaling-factor>} 0.0000${5:=<initial-value>} ${6|0=<no-initial-calc>,1=<compute-inital-val>|} ${7|0=<no-limiter>,1=<min-limiter-only>,2=<max-limiter-only>,3=<min-and-max-limiter>|} -9.e9${8:=<min or max (if W6=2)>} 9.e9${9:=<max value if W6=3>}",
+			"205${1:CCC}01 0.000000 1.00000  mflowj    102010000",
+			"205${1:CCC}02          1.00000  mflowj    102020000",
+			"$0"
+		],
+		"description": "Control variable: sum"
+	},
+	"Control variable - card 0": {
+		"prefix": ["cntrlvar-card0"],
+		"body": [
+			"205${1:CCC}00 ${2:name} ${3|sum,mult,div,diffreni,diffrend,integral,function,stdfnctn,delay,tripunit,tripdlay,poweri,powerr,powerx,prop-int,lag,lead-lag,constant,shaft,pumpctl,steamctl,feedctl,digital|} 1.00${4:=<scaling-factor>} 0.0000${5:=<initial-value>} ${6|0=<no-initial-calc>,1=<compute-inital-val>|} ${7|0=<no-limiter>,1=<min-limiter-only>,2=<max-limiter-only>,3=<min-and-max-limiter>|} -9.e9${8:=<min or max (if W6=2)>} 9.e9${9:=<max value if W6=3>}",
+			"$0"
+		],
+		"description": "Control variable: card 0"
+	},
+	"Control variable - mult": {
+		"prefix": ["cntrlvar-mult"],
+		"body": [
+			"205${1:CCC}00 ${2:name} mult 1.00${4:=<scaling-factor>} 0.0000${5:=<initial-value>} ${6|0=<no-initial-calc>,1=<compute-inital-val>|} ${7|0=<no-limiter>,1=<min-limiter-only>,2=<max-limiter-only>,3=<min-and-max-limiter>|} -9.e9${8:=<min or max (if W6=2)>} 9.e9${9:=<max value if W6=3>}",
+			"205${1:CCC}01 ${11|cntrlvar,mflowj,p,tempf,tempg|} ${12:CCCVV0000} ${13|cntrlvar,mflowj,p,tempf,tempg|} ${14:CCCVV0000} ${15:* etc...}",
+			"$0"
+		],
+		"description": "Control variable: mult"
+	},
+	"Control variable - div": {
+		"prefix": ["cntrlvar-div"],
+		"body": [
+			"205${1:CCC}00 ${2:name} div 1.00${4:=<scaling-factor>} 0.0000${5:=<initial-value>} ${6|0=<no-initial-calc>,1=<compute-inital-val>|} ${7|0=<no-limiter>,1=<min-limiter-only>,2=<max-limiter-only>,3=<min-and-max-limiter>|} -9.e9${8:=<min or max (if W6=2)>} 9.e9${9:=<max value if W6=3>}",
+			"205${1:CCC}01 rhof${11:=<denominator>} CCCVV0000 mflowj${13:=<numerator>} CCCJJ0000",
+			"$0"
+		],
+		"description": "Control variable: divide"
+	},
+	"Variable Trip": {
+		"prefix": ["trip-variable"],
+		"body": [
+			"${1:CCC} ${2|time,cntrlvar,p,mflowj|} ${3|0,CCCVV0000,CCCJJ0000|} ${4|eq,ne,gt,ge,lt,le|} ${5|null,time,cntrlvar,p,mflowj|} ${6|0,CCCVV0000,CCCJJ0000|} 0.00${7:=<additive-constant>} ${8|l,n|}  ${9| ,-1=<initialized.false>,0=<initialized.true>|}",
+			"$0"
+		],
+		"description": "Variable trip. Ex: is massflow > 5 kg/s"
+	},
+	"Logical Trip": {
+		"prefix": ["trip-logical"],
+		"body": [
+			"${1:CCC} ${2:<trip-number-1>} ${3|and,or,xor,discard,reset|} ${4:<trip-number-2>} ${5|l,n|} ${9| ,-1=<initialized.false>,0=<initialized.true>|}",
+			"$0"
+		],
+		"description": "Logical trips. Ex: is trip A and trip B both True"
 	}
 }
