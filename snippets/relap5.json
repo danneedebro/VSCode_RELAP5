@@ -229,6 +229,7 @@
 		"prefix": ["trip-variable"],
 		"body": [
 			"${1:CCC} ${2|time,cntrlvar,p,mflowj|} ${3|0,CCCVV0000,CCCJJ0000|} ${4|eq,ne,gt,ge,lt,le|} ${5|null,time,cntrlvar,p,mflowj|} ${6|0,CCCVV0000,CCCJJ0000|} 0.00${7:=<additive-constant>} ${8|l,n|}  ${9| ,-1=<initialized.false>,0=<initialized.true>|}",
+			"${$1/(.*)/${1:/upcase}/}",
 			"$0"
 		],
 		"description": "Variable trip. Ex: is massflow > 5 kg/s"
